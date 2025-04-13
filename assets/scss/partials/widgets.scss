@@ -1,12 +1,13 @@
 .widget {
     display: flex;
     flex-direction: column;
+    
 
     .widget-icon {
         svg {
-            width: 32px;
-            height: 32px;
-            stroke-width: 1.6;
+            width: 20px;
+            height: 20px;
+            stroke-width: 1.5;
             color: var(--body-text-color);
         }
     }
@@ -17,7 +18,7 @@
     .tagCloud-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
 
         a {
             background: var(--card-background);
@@ -50,7 +51,7 @@
 
         a {
             font-size: 1.4rem;
-            padding: 18px 25px;
+            padding: 15px 22px;
             display: flex;
 
             span.year {
@@ -65,3 +66,4 @@
         }
     }
 }
+

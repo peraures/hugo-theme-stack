@@ -146,7 +146,7 @@
 
     &, .menu-bottom-section ol {
         flex-direction: column;
-        gap: 30px;
+        gap: 25px;
 
         @include respond(xl) {
             gap: 25px;
@@ -168,7 +168,7 @@
 
     li {
         position: relative;
-        vertical-align: middle;
+
         padding: 0;
 
         @include respond(md) {
@@ -187,7 +187,11 @@
             display: inline-flex;
             align-items: center;
             color: var(--body-text-color);
-            gap: var(--menu-icon-separation);
+            gap: calc(var(--menu-icon-separation) * 0.5);
+
+            &:hover {
+                color: var(--accent-color); // 호버 시 색상 변경
+                }
         }
 
         span {
@@ -209,6 +213,19 @@
                 padding-left: 0;
             }
         }
+            // 추가: #dark-mode-toggle 스타일
+        &#dark-mode-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: calc(var(--menu-icon-separation) * 0.5);
+            color: var(--body-text-color);
+
+            &:hover {
+            color: var(--accent-color); // 호버 시 색상 변경
+            }
+        }
+
     }
 }
 

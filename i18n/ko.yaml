@@ -30,8 +30,8 @@ article:
         other: "마지막 수정: "
         
     readingTime:
-        one: "{{ .Count }} 분 정도"
-        other: "{{ .Count }} 분 정도"
+        one: "{{ .Count }} min"
+        other: "{{ .Count }} min"
 
 notFound:
     title:
@@ -43,7 +43,7 @@ notFound:
 widget:
     archives:
         title:
-            other: 보관함
+            other: 아카이브
         more:
             other: 더보기
             
@@ -67,6 +67,6 @@ search:
 
 footer:
     builtWith:
-        other: "{{ .Generator }}로 만듦"
+        other: Built with {{ .Generator }}
     designedBy:
-        other: "{{ .DesignedBy }}의 {{ .Theme }} 테마 사용 중"
+        other: Theme {{ .Theme }} designed by {{ .DesignedBy }}

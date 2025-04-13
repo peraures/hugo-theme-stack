@@ -94,7 +94,7 @@
 .article-translations {
     display: flex;
     color: var(--card-text-color-tertiary);
-    gap: 15px;
+    gap: 22px;
 
     svg {
         vertical-align: middle;
@@ -113,7 +113,7 @@
     & > div {
         display: inline-flex;
         align-items: center;
-        gap: 15px;
+        gap: 4px;
     }
 }
 
