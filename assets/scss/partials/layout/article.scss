@@ -135,7 +135,7 @@
         }
 
         li {
-            margin: 15px 10px 0px 15px;
+            margin: 15px 10px 15px 15px;
             padding: 0px;
 
             & > ol,
@@ -149,13 +149,19 @@
                 }
 
                 & > li:last-child {
-                    margin-bottom: 10px;
+                    margin-bottom: 30px;
                 }
             }
         }
+
         li.active-class > a {
             border-left: var(--heading-border-size) solid var(--accent-color);
-            font-weight: bold;
+            font-weight: normal; // 볼드 제거
+            color: #e57373; // 약간 예쁜 빨강/핑크 계열
+        }
+        
+        li.active-class > a:first-of-type::before {
+            text-decoration: none; // 앞의 숫자에는 밑줄 제거
         }
 
         ul li.active-class > a {
