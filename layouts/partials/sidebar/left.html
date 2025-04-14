@@ -73,7 +73,7 @@
                 {{ with $icon }}
                     {{ partial "helper/icon" . }}
                 {{ end }}
-                <span>{{- .Name -}}</span>
+                <span>{{ i18n (printf "main-menu.%s" .Name) }}</span>
             </a>
         </li>
         {{ end }}

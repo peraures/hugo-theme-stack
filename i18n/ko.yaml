@@ -27,7 +27,7 @@ article:
         other: 관련 글
         
     lastUpdatedOn:
-        other: "마지막 수정: "
+        other: Last updated on
         
     readingTime:
         one: "{{ .Count }} min"
@@ -43,13 +43,13 @@ notFound:
 widget:
     archives:
         title:
-            other: 아카이브
+            other: Posts
         more:
             other: 더보기
             
     categoriesCloud:
         title:
-            other: 카테고리
+            other: Categories
             
     tagCloud:
         title:
@@ -70,3 +70,15 @@ footer:
         other: Built with {{ .Generator }}
     designedBy:
         other: Theme {{ .Theme }} designed by {{ .DesignedBy }}
+
+main-menu:
+    Home:
+        other: Home
+    About:
+        other: About
+    Archives:
+        other: Posts
+    Search:
+        other: Search
+    Links:
+        other: Links
