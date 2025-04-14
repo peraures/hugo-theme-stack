@@ -25,12 +25,12 @@
 
             .article-details {
                 padding: var(--card-padding);
-                padding-bottom: 0;
+                padding-bottom: 0px;
             }
         }
 
         .article-content {
-            margin: var(--card-padding) 0;
+            margin: calc(var(--card-padding) + 30px) 0;
             color: var(--card-text-color-main);
 
             .footnotes {
@@ -70,12 +70,23 @@
                 text-transform: unset;
             }
 
-            .article-copyright,
-            .article-lastmod {
+            .article-copyright {
+                margin-top: 25px; // 기존 탑 마진 유지
                 a {
                     color: var(--body-text-color);
                 }
-
+        
+                a.link {
+                    box-shadow: unset;
+                }
+            }
+        
+            .article-lastmod {
+                margin-top: 2px; // 탑 마진 줄이기
+                a {
+                    color: var(--body-text-color);
+                }
+        
                 a.link {
                     box-shadow: unset;
                 }
@@ -99,7 +110,7 @@
 
     #TableOfContents {
         overflow-x: auto;
-        max-height: 75vh;
+        max-height: 150vh;
 
         ol,
         ul {
@@ -138,7 +149,7 @@
                 }
 
                 & > li:last-child {
-                    margin-bottom: 0;
+                    margin-bottom: 10px;
                 }
             }
         }
