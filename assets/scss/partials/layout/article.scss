@@ -30,7 +30,7 @@
         }
 
         .article-content {
-            margin: calc(var(--card-padding) + 30px) 0;
+            margin: var(--card-padding) 0;
             color: var(--card-text-color-main);
 
             .footnotes {
@@ -95,100 +95,84 @@
     }
 }
 
-.widget--toc {
-    background-color: var(--card-background);
-    border-radius: var(--card-border-radius);
-    box-shadow: var(--shadow-l1);
-    display: flex;
-    flex-direction: column;
-    color: var(--card-text-color-main);
-    overflow: hidden;
+#TableOfContents {
+    background-color: none; /* 배경색 추가 */
+    border-radius: var(--card-border-radius); /* 모서리 둥글게 */
+    box-shadow: var(--shadow-l1); /* 박스 그림자 추가 */
+    padding: 5px; /* 내부 여백 추가 */
+    margin-bottom: 20px; /* 아래쪽 여백 추가 */
+    overflow-x: auto;
+    max-height: 150vh;
 
-    ::-webkit-scrollbar-thumb {
-        background-color: var(--card-separator-color);
+    ol,
+    ul {
+        list-style-type: none; /* 번호 제거 */
+        margin: 0;
+        padding: 0;
     }
 
-    #TableOfContents {
-        overflow-x: auto;
-        max-height: 150vh;
+    li {
+        position: relative; /* ::before를 위한 상대 위치 */
+        margin: 15px 10px; /* 기존 마진 유지 */
+        padding: 0;
 
-        ol,
-        ul {
-            margin: 0;
-            padding: 0;
+        a {
+            text-decoration: none;
+            color: var(--card-text-color-main); /* 기본 텍스트 색상 */
+            display: block; /* 줄바꿈 시에도 간격 유지 */
+            padding-left: 12px; /* 세로선과 텍스트 간 간격 */
+            transition: color 0.3s ease;
         }
 
-        ol {
-            list-style-type: none;
-            counter-reset: item;
+        /* 세로선 추가 */
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px; /* 세로선 두께 */
+            background-color: var(--accent-color); /* 기본 세로선 색상 */
+        }
 
-            li a:first-of-type::before {
-                counter-increment: item;
-                content: counters(item, ".") ". ";
-                font-weight: bold;
-                margin-right:  5px;
+        /* 활성화된 항목 스타일 */
+        &.active-class {
+            &::before {
+                background-color: #e57373; /* 활성화된 세로선 색상 */
+            }
+
+            a {
+                color: #e57373; /* 활성화된 텍스트 색상 */
             }
         }
 
-        & > ul {
-            padding: 0 1em;
+        /* 줄바꿈 시 세로선과 텍스트 간 간격 유지 */
+        a {
+            text-indent: 0px; /* 두 번째 줄 이후에도 간격 유지 */
         }
 
-        li {
-            margin: 15px 10px 15px 15px;
-            padding: 0px;
-
-            & > ol,
-            & > ul {
-                margin-top: 10px;
-                padding-left: 15px;
-                margin-bottom: -5px;
-
-                & > li {
-                    margin: 10px 0px 0px 5px; // 내부 li의 마진
-                }
-
-                & > li:last-child {
-                    margin-bottom: 30px;
-                }
-            }
+        /* 기본적으로 H3 이하 숨김 */
+        ul ul {
+            display: none;
         }
 
-        li.active-class > a {
-            border-left: var(--heading-border-size) solid var(--accent-color);
-            font-weight: normal; // 볼드 제거
-            color: #e57373; // 약간 예쁜 빨강/핑크 계열
-        }
-        
-        li.active-class > a:first-of-type::before {
-            text-decoration: none; // 앞의 숫자에는 밑줄 제거
-        }
-
-        ul li.active-class > a {
+        /* 열렸을 때 표시 */
+        ul.open {
             display: block;
         }
+    }
 
-        @function repeat($str, $n) {
-            $result: "";
-            @for $_ from 0 to $n {
-                $result: $result + $str;
-            }
-            @return $result;
-        }
+    /* 계층 구조에 따른 마진 조정 */
+    ul {
+        & > li {
+            margin-left: 15px;
 
-        // Support up to 6 levels of indentation for lists in ToCs
-        @for $i from 0 to 5 {
-            & > ul #{repeat("> li > ul", $i)} > li.active-class > a {
-                $n: 25 + $i * 35;
-                margin-left: calc(-#{$n}px - 1em);
-                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
-            }
+            & > ul > li {
+                margin-left: 20px;
 
-            & > ol #{repeat("> li > ol", $i)} > li.active-class > a {
-                $n: 9 + $i * 35;
-                margin-left: calc(-#{$n}px - 1em);
-                padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
-                display: block;
+                & > ul > li {
+                    margin-left: 25px;
+                }
             }
         }
     }
@@ -479,4 +463,11 @@
         border-radius: 4px;
         display: inline-block;
     }
+}
+
+
+.article-divider {
+    border: none;
+    border-top: 1px solid var(--card-separator-color);
+    margin: 30px 0;
 }
